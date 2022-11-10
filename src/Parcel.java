@@ -64,23 +64,23 @@ public class Parcel {
 	public int getY() { return y; }
 	public void update()
 	{
-		int flbx = x;
-		int flby = y;
-		int fltx = x;
-		int flty = y - height;
-		int frtx = x + width;
-		int frty = y - height;
-		int frbx = x + width;
-		int frby = y;
-		int brbx = (int)(x + width + length * slope);
-		int brby = (int)(y - length * slope);
-		int brtx = (int)(x + width + length * slope);
-		int brty = (int)(y - height - length * slope);
-		int bltx = (int)(x + length * slope);
-		int blty = (int)(y - height - length * slope);
-		frontx = new int[] {flbx, fltx, frtx, frbx, flbx};
-		fronty = new int[] {flby, flty, frty, frby, flby};
-		sidex = new int[] {frtx, frbx, brbx, brtx, frtx};
+		int flbx = x;							//	(bltx, blty)    (brtx, brty)
+		int flby = y;							//      	 +------------+
+		int fltx = x;							//      	/             /
+		int flty = y - height;						//	       /             /|				
+		int frtx = x + width;						//            /             / |				
+		int frty = y - height;						//  	(fltx, flty)  (frtx, frty)
+		int frbx = x + width;						//	    +--------------+  |					
+		int frby = y;							//	    |              |  |
+		int brbx = (int)(x + width + length * slope);			//	    |              |  |
+		int brby = (int)(y - length * slope);				//	    |              |  |
+		int brtx = (int)(x + width + length * slope);			//	    |              |  |
+		int brty = (int)(y - height - length * slope);			//	    |              |  |
+		int bltx = (int)(x + length * slope);				//	    |              |  +
+		int blty = (int)(y - height - length * slope);			//	    |              | / (brbx, brby)
+		frontx = new int[] {flbx, fltx, frtx, frbx, flbx};		//	    |              |/	
+		fronty = new int[] {flby, flty, frty, frby, flby};		//	    +______________+		
+		sidex = new int[] {frtx, frbx, brbx, brtx, frtx};		//	  (flbx, flby)  (frbx, frby)	
 		sidey = new int[] {frty, frby, brby, brty, frty};
 		topx = new int[] {fltx, frtx, brtx, bltx, fltx};
 		topy = new int[] {flty, frty, brty, blty, frty};
