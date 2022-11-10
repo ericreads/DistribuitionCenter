@@ -7,12 +7,14 @@ enum BoxType{
 }
 public class DistroJPanel extends JPanel {
 	
-	private static int WIDTH = 1920;
-	private static int HEIGHT = 1080;
+	private static int WIDTH = 1280;
+	private static int HEIGHT = 720;
+	private static float SLOPE = 0.5f;
+	private Parcel parcel = new Parcel(-50, HEIGHT/2, SLOPE);
 	
 	public void update()
 	{
-		
+		parcel.update();
 	}
 	
 	public void paint(Graphics g)
@@ -20,6 +22,7 @@ public class DistroJPanel extends JPanel {
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setColor(Color.DARK_GRAY);
 		g2d.fillRect(0, 0, WIDTH, HEIGHT);
+		parcel.draw(g2d);
 	}
 	
 	public static void main(String[] args) throws InterruptedException{
