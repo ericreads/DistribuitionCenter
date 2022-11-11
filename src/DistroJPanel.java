@@ -8,8 +8,8 @@ enum BoxType{
 }
 public class DistroJPanel extends JPanel {
 	
-	private static int WIDTH = 1280;
-	private static int HEIGHT = 720;
+	private static int WIDTH = 1020;
+	private static int HEIGHT = 640;
 	private static float SLOPE = 0.5f;
 	private static ParcelManager parcels = new ParcelManager(20, WIDTH, HEIGHT, SLOPE);
 	

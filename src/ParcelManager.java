@@ -20,12 +20,12 @@ public class ParcelManager {
 		}
 		pixMove = 0;
 		activeCount = 0;
-		scanner = new Scanner(615, 120, screenWidth, screenHeight);
+		scanner = new Scanner(615, 500, screenWidth, screenHeight, slope);
 		paused = false;
 		switchConveyor = new SwitchConveyor(-100, screenHeight/2+10, 30, slope);
-		domesticConveyor = new AutoConveyor(650, screenHeight/2+10, 25, slope);
-		internationalConveyor = new AutoConveyor(650, screenHeight/3+10, 25, slope);
-		unknownConveyor = new AutoConveyor(650, screenHeight/3*2+10, 25, slope);
+		domesticConveyor = new AutoConveyor(650, screenHeight/2+10, 15, slope);
+		internationalConveyor = new AutoConveyor(650, screenHeight/3+10, 15, slope);
+		unknownConveyor = new AutoConveyor(650, screenHeight/3*2+10, 15, slope);
 	}
 	public void update()
 	{
@@ -57,6 +57,7 @@ public class ParcelManager {
 	}
 	public void draw(Graphics2D g)
 	{
+		scanner.drawBG(g);
 		switchConveyor.draw(g);
 		domesticConveyor.draw(g);
 		internationalConveyor.draw(g);
@@ -65,7 +66,7 @@ public class ParcelManager {
 		{
 			parcels[i].draw(g);
 		}
-		scanner.draw(g);
+		scanner.drawFG(g);
 	}
 	public void keyPressed(KeyEvent e)
 	{

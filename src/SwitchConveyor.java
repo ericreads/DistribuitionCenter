@@ -17,15 +17,15 @@ public class SwitchConveyor extends Conveyor {
 		if(super.getIsMoving())
 		{
 			g.setColor(Color.red.darker());
-			g.fillRect(super.getX() + 5 + super.getLength()/2*25, super.getY()+15, 20, 10);
+			g.fillRect(super.getX() + 5 + super.getLength()/2*25, super.getY()+15, 10, 10);
 			g.setColor(Color.green);
-			g.fillRect(super.getX() + 10 + super.getLength()/2*25, super.getY()+10, 20, 10);
+			g.fillRect(super.getX() + 15 + super.getLength()/2*25, super.getY()+15, 10, 10);
 		} else
 		{
 			g.setColor(Color.red);
-			g.fillRect(super.getX() + 5 + super.getLength()/2*25, super.getY()+15, 20, 10);
+			g.fillRect(super.getX() + 5 + super.getLength()/2*25, super.getY()+15, 10, 10);
 			g.setColor(Color.green.darker());
-			g.fillRect(super.getX() + 10 + super.getLength()/2*25, super.getY()+10, 20, 10);
+			g.fillRect(super.getX() + 15 + super.getLength()/2*25, super.getY()+15, 10, 10);
 		}
 	}
 }
