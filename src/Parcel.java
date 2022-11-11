@@ -13,6 +13,7 @@ public class Parcel {
 	private int[] topy;
 	private int[] sidey;
 	private int[] fronty;
+	private boolean scanned;
 	private Color shadeColor;
 	private Color lightColor;
 	private BoxType type;
@@ -37,7 +38,7 @@ public class Parcel {
 		else if(randNum > 0.33 && randNum < 0.66)
 			type = BoxType.International;
 		else
-			type = BoxType.Unkown;
+			type = BoxType.Unknown;
 		switch(type)
 		{
 			case Domestic:
@@ -48,7 +49,7 @@ public class Parcel {
 				lightColor = new Color(77/255.f, 139/255.f, 255/255.f);
 				shadeColor = new Color(60/255.f, 106/255.f, 171/255.f);
 				break;
-			case Unkown:
+			case Unknown:
 				lightColor = new Color(255/255.f, 252/255.f, 59/255.f);
 				shadeColor = new Color(171/255.f, 169/255.f, 60/255.f);
 				break;
@@ -57,26 +58,30 @@ public class Parcel {
 				shadeColor = Color.DARK_GRAY;
 				break;
 		}
+		update();
 	}
 	public void setX(int x) { this.x = x; }
 	public void setY(int y) { this.y = y; }
+	public void scan() { scanned = true; }
+	public BoxType getType() { return type; }
 	public int getX() { return x; }
 	public int getY() { return y; }
+	public boolean getScanned() { return scanned; }
 	public void update()
 	{
-		int flbx = x;							//	(bltx, blty)    (brtx, brty)
-		int flby = y;							//      	 +------------+
-		int fltx = x;							//      	/             /
-		int flty = y - height;						//	       /             /|				
-		int frtx = x + width;						//            /             / |				
-		int frty = y - height;						//  	(fltx, flty)  (frtx, frty)
-		int frbx = x + width;						//	    +--------------+  |					
-		int frby = y;							//	    |              |  |
+		int flbx = x;											//	(bltx, blty)    (brtx, brty)
+		int flby = y;											//      	 +------------+
+		int fltx = x;											//      	/             /
+		int flty = y - height;									//	       /             /|				
+		int frtx = x + width;									//        /             / |				
+		int frty = y - height;									//  (fltx, flty)  (frtx, frty)
+		int frbx = x + width;									//	    +--------------+  |					
+		int frby = y;											//	    |              |  |
 		int brbx = (int)(x + width + length * slope);			//	    |              |  |
-		int brby = (int)(y - length * slope);				//	    |              |  |
+		int brby = (int)(y - length * slope);					//	    |              |  |
 		int brtx = (int)(x + width + length * slope);			//	    |              |  |
 		int brty = (int)(y - height - length * slope);			//	    |              |  |
-		int bltx = (int)(x + length * slope);				//	    |              |  +
+		int bltx = (int)(x + length * slope);					//	    |              |  +
 		int blty = (int)(y - height - length * slope);			//	    |              | / (brbx, brby)
 		frontx = new int[] {flbx, fltx, frtx, frbx, flbx};		//	    |              |/	
 		fronty = new int[] {flby, flty, frty, frby, flby};		//	    +______________+		

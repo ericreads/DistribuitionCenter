@@ -1,8 +1,9 @@
 import java.awt.*;
 import javax.swing.*;
+import java.awt.event.*;
 enum BoxType{
 	International,
-	Unkown,
+	Unknown,
 	Domestic
 }
 public class DistroJPanel extends JPanel {
@@ -11,6 +12,29 @@ public class DistroJPanel extends JPanel {
 	private static int HEIGHT = 720;
 	private static float SLOPE = 0.5f;
 	private static ParcelManager parcels = new ParcelManager(20, WIDTH, HEIGHT, SLOPE);
+	
+	public DistroJPanel()
+	{
+		addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent e)
+			{
+				
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e)
+			{
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e)
+			{
+				parcels.keyPressed(e);
+			}
+		});
+		setFocusable(true);
+	}
 	
 	public void update()
 	{
@@ -27,7 +51,7 @@ public class DistroJPanel extends JPanel {
 	
 	public static void main(String[] args) throws InterruptedException{
 	{
-		JFrame frame = new JFrame("Cityscape");
+		JFrame frame = new JFrame("Distribution Center");
 		DistroJPanel p = new DistroJPanel();
 		frame.add(p);
 		frame.setSize(WIDTH, HEIGHT);

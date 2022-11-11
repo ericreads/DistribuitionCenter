@@ -1,3 +1,8 @@
-/BoxType.class
-/DistroJPanel.class
-/Parcel.class
+/ParcelManager.class
+/Scanner.class
+/Screen.class
+/DistroJPanel$1.class
+/Conveyor.class
+/Line.class
+/SwitchConveyor.class
+/AutoConveyor.class
