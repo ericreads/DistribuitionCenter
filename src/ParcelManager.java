@@ -29,7 +29,7 @@ public class ParcelManager {
 	}
 	public void update()
 	{
-		if(pixMove % 200 == 0 && activeCount + 1 < parcels.length)
+		if(pixMove % 200 == 0 && activeCount < parcels.length)
 			activeCount++;
 		for(int i = 0; i < activeCount; i++)
 		{
