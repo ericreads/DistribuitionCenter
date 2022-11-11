@@ -49,6 +49,14 @@ public class Screen {
 				default:
 					break;
 			}
+		}else
+		{
+			//Eliminate lag of drawing image for the first time
+			g.drawImage(plane, x, y, null);
+			g.drawImage(truck, x, y, null);
+			g.drawImage(questionMark, x, y, null);
+			g.fillRect(x, y, WIDTH, HEIGHT);
 		}
+		
 	}
 }
