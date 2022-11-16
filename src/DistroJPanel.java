@@ -46,7 +46,7 @@ public class DistroJPanel extends JPanel {
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setColor(Color.DARK_GRAY);
 		g2d.fillRect(0, 0, WIDTH, HEIGHT);
-		this.parcels.draw(g2d);
+		parcels.draw(g2d);
 	}
 	
 	public static void main(String[] args) throws InterruptedException{
