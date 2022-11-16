@@ -18,33 +18,33 @@ public class Screen {
 		this.x = x;
 		this.y = y;
 		try {
-			truck = ImageIO.read(new File("truck.png")).getScaledInstance(WIDTH, HEIGHT, Image.SCALE_DEFAULT);
-			plane = ImageIO.read(new File("plane.png")).getScaledInstance(WIDTH, HEIGHT, Image.SCALE_DEFAULT);
-			questionMark = ImageIO.read(new File("questionMark.png")).getScaledInstance(WIDTH, HEIGHT, Image.SCALE_DEFAULT);
+			this.truck = ImageIO.read(new File("truck.png")).getScaledInstance(this.WIDTH, this.HEIGHT, Image.SCALE_DEFAULT);
+			this.plane = ImageIO.read(new File("plane.png")).getScaledInstance(this.WIDTH, this.HEIGHT, Image.SCALE_DEFAULT);
+			this.questionMark = ImageIO.read(new File("questionMark.png")).getScaledInstance(this.WIDTH, this.HEIGHT, Image.SCALE_DEFAULT);
 		} catch (IOException e) {}
 	}
 	
 	public void setType(BoxType type)
 	{
-		currentBox = type;
+		this.currentBox = type;
 	}
 	
 	public void draw(Graphics2D g)
 	{
 		g.setColor(Color.white);
 		g.fillRect(x, y, WIDTH, HEIGHT);
-		if(currentBox != null)
+		if(this.currentBox != null)
 		{
-			switch(currentBox)
+			switch(this.currentBox)
 			{
 				case International:
-					g.drawImage(plane, x, y, null);
+					g.drawImage(this.plane, this.x, this.y, null);
 					break;
 				case Domestic:
-					g.drawImage(truck, x, y, null);
+					g.drawImage(this.truck, this.x, this.y, null);
 					break;
 				case Unknown:
-					g.drawImage(questionMark, x, y, null);
+					g.drawImage(this.questionMark, this.x, this.y, null);
 					break;
 				default:
 					break;
@@ -52,10 +52,10 @@ public class Screen {
 		}else
 		{
 			//Eliminate lag of drawing image for the first time
-			g.drawImage(plane, x, y, null);
-			g.drawImage(truck, x, y, null);
-			g.drawImage(questionMark, x, y, null);
-			g.fillRect(x, y, WIDTH, HEIGHT);
+			g.drawImage(this.plane, this.x, this.y, null);
+			g.drawImage(this.truck, this.x, this.y, null);
+			g.drawImage(this.questionMark, this.x, this.y, null);
+			g.fillRect(this.x, this.y, this.WIDTH, this.HEIGHT);
 		}
 		
 	}

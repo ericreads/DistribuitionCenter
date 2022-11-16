@@ -23,85 +23,85 @@ public class Parcel {
 		this.x = x;
 		this.y = y;
 		this.slope = slope;
-		width = (int)(Math.random() * 40 + 10);
-		height = (int)(Math.random() * 30 + 20);
-		length = (int)(Math.random() * 30 + 20);
-		topx = new int[4];
-		sidex = new int[4];
-		frontx = new int[4];
-		topy = new int[4];
-		sidey = new int[4];
-		fronty = new int[4];
+		this.width = (int)(Math.random() * 40 + 10);
+		this.height = (int)(Math.random() * 30 + 20);
+		this.length = (int)(Math.random() * 30 + 20);
+		this.topx = new int[4];
+		this.sidex = new int[4];
+		this.frontx = new int[4];
+		this.topy = new int[4];
+		this.sidey = new int[4];
+		this.fronty = new int[4];
 		double randNum = Math.random();
 		if(randNum < 0.33)
-			type = BoxType.Domestic;
+			this.type = BoxType.Domestic;
 		else if(randNum > 0.33 && randNum < 0.66)
-			type = BoxType.International;
+			this.type = BoxType.International;
 		else
-			type = BoxType.Unknown;
-		switch(type)
+			this.type = BoxType.Unknown;
+		switch(this.type)
 		{
 			case Domestic:
-				lightColor = new Color(76/255.f, 252/255.f, 138/255.f);
-				shadeColor = new Color(60/255.f, 171/255.f, 99/255.f);
+				this.lightColor = new Color(76/255.f, 252/255.f, 138/255.f);
+				this.shadeColor = new Color(60/255.f, 171/255.f, 99/255.f);
 				break;
 			case International:
-				lightColor = new Color(77/255.f, 139/255.f, 255/255.f);
-				shadeColor = new Color(60/255.f, 106/255.f, 171/255.f);
+				this.lightColor = new Color(77/255.f, 139/255.f, 255/255.f);
+				this.shadeColor = new Color(60/255.f, 106/255.f, 171/255.f);
 				break;
 			case Unknown:
-				lightColor = new Color(255/255.f, 252/255.f, 59/255.f);
-				shadeColor = new Color(171/255.f, 169/255.f, 60/255.f);
+				this.lightColor = new Color(255/255.f, 252/255.f, 59/255.f);
+				this.shadeColor = new Color(171/255.f, 169/255.f, 60/255.f);
 				break;
 			default:
-				lightColor = Color.gray;
-				shadeColor = Color.DARK_GRAY;
+				this.lightColor = Color.gray;
+				this.shadeColor = Color.DARK_GRAY;
 				break;
 		}
 		update();
 	}
 	public void setX(int x) { this.x = x; }
 	public void setY(int y) { this.y = y; }
-	public void scan() { scanned = true; }
-	public BoxType getType() { return type; }
-	public int getX() { return x; }
-	public int getY() { return y; }
-	public boolean getScanned() { return scanned; }
+	public void scan() { this.scanned = true; }
+	public BoxType getType() { return this.type; }
+	public int getX() { return this.x; }
+	public int getY() { return this.y; }
+	public boolean getScanned() { return this.scanned; }
 	public void update()
 	{
-		int flbx = x;											//	(bltx, blty)    (brtx, brty)
-		int flby = y;											//      	 +------------+
-		int fltx = x;											//      	/             /
-		int flty = y - height;									//	       /             /|				
-		int frtx = x + width;									//        /             / |				
-		int frty = y - height;									//  (fltx, flty)  (frtx, frty)
-		int frbx = x + width;									//	    +--------------+  |					
-		int frby = y;											//	    |              |  |
-		int brbx = (int)(x + width + length * slope);			//	    |              |  |
-		int brby = (int)(y - length * slope);					//	    |              |  |
-		int brtx = (int)(x + width + length * slope);			//	    |              |  |
-		int brty = (int)(y - height - length * slope);			//	    |              |  |
-		int bltx = (int)(x + length * slope);					//	    |              |  +
-		int blty = (int)(y - height - length * slope);			//	    |              | / (brbx, brby)
-		frontx = new int[] {flbx, fltx, frtx, frbx, flbx};		//	    |              |/	
-		fronty = new int[] {flby, flty, frty, frby, flby};		//	    +______________+		
-		sidex = new int[] {frtx, frbx, brbx, brtx, frtx};		//	  (flbx, flby)  (frbx, frby)	
-		sidey = new int[] {frty, frby, brby, brty, frty};
-		topx = new int[] {fltx, frtx, brtx, bltx, fltx};
-		topy = new int[] {flty, frty, brty, blty, frty};
+		int flbx = this.x;															//	(bltx, blty)    (brtx, brty)
+		int flby = this.y;															//      	 +------------+
+		int fltx = this.x;															//      	/             /
+		int flty = this.y - this.height;											//	       /             /|				
+		int frtx = this.x + this.width;												//        /             / |				
+		int frty = this.y - this.height;											//  (fltx, flty)  (frtx, frty)
+		int frbx = this.x + this.width;												//	    +--------------+  |					
+		int frby = this.y;															//	    |              |  |
+		int brbx = (int)(this.x + this.width + this.length * this.slope);			//	    |              |  |
+		int brby = (int)(this.y - this.length * this.slope);						//	    |              |  |
+		int brtx = (int)(this.x + this.width + this.length * this.slope);			//	    |              |  |
+		int brty = (int)(this.y - this.height - this.length * this.slope);			//	    |              |  |
+		int bltx = (int)(this.x + this.length * this.slope);						//	    |              |  +
+		int blty = (int)(this.y - this.height - this.length * this.slope);			//	    |              | / (brbx, brby)
+		this.frontx = new int[] {flbx, fltx, frtx, frbx, flbx};						//	    |              |/	
+		this.fronty = new int[] {flby, flty, frty, frby, flby};						//	    +______________+		
+		this.sidex = new int[] {frtx, frbx, brbx, brtx, frtx};						//	  (flbx, flby)  (frbx, frby)	
+		this.sidey = new int[] {frty, frby, brby, brty, frty};
+		this.topx = new int[] {fltx, frtx, brtx, bltx, fltx};
+		this.topy = new int[] {flty, frty, brty, blty, frty};
 	}
 	public void draw(Graphics2D g)
 	{
-		g.setColor(lightColor);
-		g.fillPolygon(frontx, fronty, 5);
-		g.setColor(lightColor);
-		g.fillPolygon(topx, topy, 5);
-		g.setColor(shadeColor);
-		g.fillPolygon(sidex, sidey, 5);
+		g.setColor(this.lightColor);
+		g.fillPolygon(this.frontx, this.fronty, 5);
+		g.setColor(this.lightColor);
+		g.fillPolygon(this.topx, this.topy, 5);
+		g.setColor(this.shadeColor);
+		g.fillPolygon(this.sidex, this.sidey, 5);
 		g.setColor(Color.black);
-		g.drawPolyline(topx, topy, 5);
-		g.drawPolyline(frontx, fronty, 5);
-		g.drawPolyline(sidex, sidey, 5);
+		g.drawPolyline(this.topx, this.topy, 5);
+		g.drawPolyline(this.frontx, this.fronty, 5);
+		g.drawPolyline(this.sidex, this.sidey, 5);
 		
 	}
 }

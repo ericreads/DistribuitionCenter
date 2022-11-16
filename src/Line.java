@@ -19,12 +19,12 @@ public class Line {
 		this.x1 = x1;
 		this.x2 = x2;
 	}
-	public int getX1() { return x1; }
-	public int getX2() { return x2; }
+	public int getX1() { return this.x1; }
+	public int getX2() { return this.x2; }
 	
 	public void draw(Graphics2D g)
 	{
 		g.setColor(Color.black);
-		g.drawLine(x1, y1, x2, y2);
+		g.drawLine(this.x1, this.y1, this.x2, this.y2);
 	}
 }

@@ -11,7 +11,7 @@ public class DistroJPanel extends JPanel {
 	private static int WIDTH = 1020;
 	private static int HEIGHT = 640;
 	private static float SLOPE = 0.5f;
-	private static ParcelManager parcels = new ParcelManager(20, WIDTH, HEIGHT, SLOPE);
+	private static ParcelManager parcels = new ParcelManager(20, this.WIDTH, this.HEIGHT, this.SLOPE);
 	
 	public DistroJPanel()
 	{
@@ -38,15 +38,15 @@ public class DistroJPanel extends JPanel {
 	
 	public void update()
 	{
-		parcels.update();
+		this.parcels.update();
 	}
 	
 	public void paint(Graphics g)
 	{
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setColor(Color.DARK_GRAY);
-		g2d.fillRect(0, 0, WIDTH, HEIGHT);
-		parcels.draw(g2d);
+		g2d.fillRect(0, 0, this.WIDTH, this.HEIGHT);
+		this.parcels.draw(g2d);
 	}
 	
 	public static void main(String[] args) throws InterruptedException{

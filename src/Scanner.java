@@ -22,50 +22,50 @@ public class Scanner {
 	{
 		this.x = x;
 		this.y = y;
-		int flbx = x;											//	(bltx, blty)    (brtx, brty)
-		int flby = y;											//      	 +------------+
-		int fltx = x;											//      	/             /
-		int flty = y - HEIGHT;									//	       /             /|				
-		int frtx = x + WIDTH;									//        /             / |				
-		int frty = y - HEIGHT;									//  (fltx, flty)  (frtx, frty)
-		int frbx = x + WIDTH;									//	    +--------------+  |					
-		int frby = y;											//	    |              |  |
-		int brbx = (int)(x + WIDTH + DEPTH * slope);			//	    |              |  |
-		int brby = (int)(y - DEPTH * slope);					//	    |              |  |
-		int brtx = (int)(x + WIDTH + DEPTH * slope);			//	    |              |  |
-		int brty = (int)(y - HEIGHT - DEPTH * slope);			//	    |              |  |
-		int bltx = (int)(x + DEPTH * slope);					//	    |              |  +
-		int blty = (int)(y - HEIGHT - DEPTH * slope);			//	    |              | / (brbx, brby)
-		frontx = new int[] {flbx, fltx, frtx, frbx, flbx};		//	    |              |/	
-		fronty = new int[] {flby, flty, frty, frby, flby};		//	    +______________+		
-		sidex = new int[] {frtx, frbx, brbx, brtx, frtx};		//	  (flbx, flby)  (frbx, frby)	
-		sidey = new int[] {frty, frby, brby, brty, frty};
-		topx = new int[] {fltx, frtx, brtx, bltx, fltx};
-		topy = new int[] {flty, frty, brty, blty, frty};
+		int flbx = this.x;											//	(bltx, blty)    (brtx, brty)
+		int flby = this.y;											//      	 +------------+
+		int fltx = this.x;											//      	/             /
+		int flty = this.y - this.HEIGHT;									//	       /             /|				
+		int frtx = this.x + this.WIDTH;									//        /             / |				
+		int frty = this.y - this.HEIGHT;									//  (fltx, flty)  (frtx, frty)
+		int frbx = this.x + this.WIDTH;									//	    +--------------+  |					
+		int frby = this.y;											//	    |              |  |
+		int brbx = (int)(this.x + this.WIDTH + this.DEPTH * slope);			//	    |              |  |
+		int brby = (int)(this.y - this.DEPTH * slope);					//	    |              |  |
+		int brtx = (int)(this.x + this.WIDTH + this.DEPTH * slope);			//	    |              |  |
+		int brty = (int)(this.y - this.HEIGHT - this.DEPTH * slope);			//	    |              |  |
+		int bltx = (int)(this.x + this.DEPTH * slope);					//	    |              |  +
+		int blty = (int)(this.y - this.HEIGHT - this.DEPTH * slope);			//	    |              | / (brbx, brby)
+		this.frontx = new int[] {flbx, fltx, frtx, frbx, flbx};		//	    |              |/	
+		this.fronty = new int[] {flby, flty, frty, frby, flby};		//	    +______________+		
+		this.sidex = new int[] {frtx, frbx, brbx, brtx, frtx};		//	  (flbx, flby)  (frbx, frby)	
+		this.sidey = new int[] {frty, frby, brby, brty, frty};
+		this.topx = new int[] {fltx, frtx, brtx, bltx, fltx};
+		this.topy = new int[] {flty, frty, brty, blty, frty};
 		this.screenWidth = screenWidth;
 		this.screenHeight = screenHeight;
-		lightOn = false;
-		screen = new Screen(50, 400);
+		this.lightOn = false;
+		this.screen = new Screen(50, 400);
 	}
 	public void scan(Parcel[] parcels)
 	{
-		lightOn = false;
+		this.lightOn = false;
 		for(Parcel parcel : parcels)
 		{
 			if(parcel.getX() > x && parcel.getX() < x + WIDTH && parcel.getY() < y && parcel.getY() > y - HEIGHT)
 			{
-				lightOn = true;
-				screen.setType(parcel.getType());
+				this.lightOn = true;
+				this.screen.setType(parcel.getType());
 				parcel.scan();
 				switch(parcel.getType())
 				{
 					case International:
-						parcel.setY(screenHeight / 3);
+						parcel.setY(this.screenHeight / 3);
 						break;
 					case Domestic:
 						break;
 					case Unknown:
-						parcel.setY((screenHeight / 3) * 2);
+						parcel.setY((this.screenHeight / 3) * 2);
 						break;
 					default:
 						break;
@@ -76,22 +76,22 @@ public class Scanner {
 	public void drawBG(Graphics2D g)
 	{
 		g.setColor(Color.gray.darker().darker().darker().darker());
-		g.fillPolygon(sidex, sidey, 4);
+		g.fillPolygon(this.sidex, this.sidey, 4);
 		g.setColor(Color.gray);
-		g.fillPolygon(topx, topy, 4);
+		g.fillPolygon(this.topx, this.topy, 4);
 	}
 	public void drawFG(Graphics2D g)
 	{
 		g.setColor(Color.gray);
-		g.fillPolygon(new Polygon(frontx, fronty, 4));
-		if(lightOn)
+		g.fillPolygon(new Polygon(this.frontx, this.fronty, 4));
+		if(this.lightOn)
 			g.setColor(Color.red);
 		else
 			g.setColor(Color.darkGray);
-		g.fillRect(x+20, y-HEIGHT+10, 10, 10);
+		g.fillRect(this.x+20, this.y-this.HEIGHT+10, 10, 10);
 		g.setColor(Color.black);
 		//g.drawPolyLine(topx, topy, 5);
 		
-		screen.draw(g);
+		this.screen.draw(g);
 	}
 }
