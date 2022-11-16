@@ -18,9 +18,9 @@ public class Screen {
 		this.x = x;
 		this.y = y;
 		try {
-			this.truck = ImageIO.read(new File("truck.png")).getScaledInstance(this.WIDTH, this.HEIGHT, Image.SCALE_DEFAULT);
-			this.plane = ImageIO.read(new File("plane.png")).getScaledInstance(this.WIDTH, this.HEIGHT, Image.SCALE_DEFAULT);
-			this.questionMark = ImageIO.read(new File("questionMark.png")).getScaledInstance(this.WIDTH, this.HEIGHT, Image.SCALE_DEFAULT);
+			this.truck = ImageIO.read(new File("truck.png")).getScaledInstance(WIDTH, HEIGHT, Image.SCALE_DEFAULT);
+			this.plane = ImageIO.read(new File("plane.png")).getScaledInstance(WIDTH, HEIGHT, Image.SCALE_DEFAULT);
+			this.questionMark = ImageIO.read(new File("questionMark.png")).getScaledInstance(WIDTH, HEIGHT, Image.SCALE_DEFAULT);
 		} catch (IOException e) {}
 	}
 	
@@ -55,7 +55,7 @@ public class Screen {
 			g.drawImage(this.plane, this.x, this.y, null);
 			g.drawImage(this.truck, this.x, this.y, null);
 			g.drawImage(this.questionMark, this.x, this.y, null);
-			g.fillRect(this.x, this.y, this.WIDTH, this.HEIGHT);
+			g.fillRect(this.x, this.y, WIDTH, HEIGHT);
 		}
 		
 	}
